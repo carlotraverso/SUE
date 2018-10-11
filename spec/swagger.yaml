@@ -71,12 +71,6 @@ paths:
           type: string
           description: "The json web token provided by the /authentication endpoint on successful authentication"
           required: true
-        - in: query
-          name: type
-          type: string
-          enum:
-            - "information"
-          description: "Used when performing lookups on ingested or processing documents."
       responses:
           '200':
             description: "Success - it was able to find some record of the document requested within one of the seal data sources."
