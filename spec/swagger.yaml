@@ -1,0 +1,82 @@
+swagger: "2.0"
+info:
+  description: ""
+  version: "1.0.0"
+  title: "Seal Update and Export(SUE)"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "stg-dev-scd.seal-software.com:3030"
+basePath: "/"
+tags:
+  - name: "files"
+    description: "File inspection endpoint."
+  - name: "authentication"
+    description: "Authentication into update and export via the seal api."
+schemes:
+  - "http"
+paths:
+  '/files/{id}':
+    get:
+      summary: "File Inspection"
+      
+      description: "Used to identify ingested contracts and where they are in the ingestion process"
+      tags: ["files"]
+      produces:
+        - "application/json"
+      parameters: 
+        - in: header
+          name: Content-Type
+          type: string
+          enum:
+            - "application/json"
+        - in: header
+          name: Authorization
+          type: string
+          description: "The json web token provided by the /authentication endpoint on successful authentication"
+          required: true
+        - in: query
+          name: type
+          type: string
+          enum:
+            - "information"
+          description: "Used when performing lookups on ingested or processing documents."
+        - in: path
+          name: id
+          type: string
+          required: true
+          description: "The id of the document that you are looking for. The id is the lowercase sha1 of the original document."
+      responses:
+        '200':
+          description: ""
+  '/authentication':
+    get:
+      summary: "Authentication/Authorization"
+      
+      description: "Used to identify ingested contracts and where they are in the ingestion process"
+      tags: ["files"]
+      produces:
+        - "application/json"
+      parameters: 
+        - in: header
+          name: Content-Type
+          type: string
+          enum:
+            - "application/json"
+        - in: header
+          name: Authorization
+          type: string
+          description: "The json web token provided by the /authentication endpoint on successful authentication"
+          required: true
+        - in: query
+          name: type
+          type: string
+          enum:
+            - "information"
+          description: "Used when performing lookups on ingested or processing documents."
+      responses:
+          '200':
+            description: "Success - it was able to find some record of the document requested within one of the seal data sources."

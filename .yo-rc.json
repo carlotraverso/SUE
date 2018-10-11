@@ -1,0 +1,11 @@
+{
+  "generator-openapi-repo": {
+    "importExistingSpec": true,
+    "importedSpec": "/Users/jordandziat/Downloads/swagger.json",
+    "name": "Seal Update and Export",
+    "repo": "SealSoftware-ProfessionalServices/seal-update-and-export-swagger",
+    "splitSpec": false,
+    "samples": true,
+    "installSwaggerUI": true
+  }
+}
